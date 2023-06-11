@@ -7,12 +7,13 @@ import { usePathname } from "next/navigation";
 import logo from "../public/logo.png";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiInstagram } from "react-icons/fi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Navbar = () => {
   const pathname = usePathname();
   const navLinks = [
     {
-      label: "Cart",
+      label: <AiOutlineShoppingCart />,
       href: "/cart",
     },
     {
