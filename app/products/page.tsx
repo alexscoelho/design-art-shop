@@ -4,47 +4,18 @@ import hero from "../../public/hero.png";
 
 import { AiOutlineEye } from "react-icons/ai";
 import Link from "next/link";
+import { prisma } from "../db";
 
-const products = [
-  {
-    id: 23424,
-    name: "Taza",
-    img: "",
-    price: "$ 12",
-  },
-  {
-    id: 565,
-    name: "Franela",
-    img: "",
-    price: "$ 20",
-  },
-  {
-    id: 768,
-    name: "Globos",
-    img: "",
-    price: "$ 6",
-  },
-  {
-    id: 987,
-    name: "Franela",
-    img: "",
-    price: "$ 21",
-  },
-  {
-    id: 444,
-    name: "Taza",
-    img: "",
-    price: "$ 15",
-  },
-  {
-    id: 4986,
-    name: "Llavero",
-    img: "",
-    price: "$ 21",
-  },
-];
+type Props = {
+  category: string;
+};
 
-const Products = () => {
+const Products = async ({ category }: Props) => {
+  const products = await prisma.product.findMany({
+    where: {
+      categoryLabel: category,
+    },
+  });
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-3 px-3">
       {products.map((product) => (

@@ -3,26 +3,10 @@ import React from "react";
 
 import hero from "../public/hero.png";
 import Link from "next/link";
+import { prisma } from "@/app/db";
 
-const categories = [
-  {
-    label: "Tazas",
-    img: "",
-    id: 123,
-  },
-  {
-    label: "Globos",
-    img: "",
-    id: 534,
-  },
-  {
-    label: "Franelas",
-    img: "",
-    id: 454,
-  },
-];
-
-const Categories = () => {
+const Categories = async () => {
+  const categories = await prisma.category.findMany();
   return (
     <>
       <p className="text-2xl font-medium text-center mt-4">Categorias</p>
