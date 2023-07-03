@@ -8,6 +8,7 @@ import logo from "../public/logo.png";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiInstagram } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import SignInButton from "./SignInButton";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -19,6 +20,10 @@ const Navbar = () => {
     {
       label: "Products",
       href: "/products",
+    },
+    {
+      label: "Designs",
+      href: "/designs",
     },
   ];
   const externalLinks = [
@@ -36,7 +41,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center gap-5 justify-center px-4 border-b">
       <Link href="/">
-        <Image src={logo} alt="logo" width={120} height={100} />
+        <Image src={logo} alt="logo" width={80} height={60} />
       </Link>
       <form>
         <input
@@ -52,7 +57,7 @@ const Navbar = () => {
           <Link
             className={isActive ? "text-blue-600" : "text-black"}
             href={link.href}
-            key={link.label}
+            key={link.href}
           >
             {link.label}
           </Link>
@@ -69,6 +74,7 @@ const Navbar = () => {
           </a>
         );
       })}
+      <SignInButton />
     </div>
   );
 };

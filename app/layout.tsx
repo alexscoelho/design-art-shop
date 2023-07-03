@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
+import NextAuthProvider from "@/components/NextAuthProvider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <div className="flex flex-col h-full">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <NextAuthProvider>
+          <div className="flex flex-col h-full">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   );

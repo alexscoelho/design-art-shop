@@ -2,7 +2,16 @@ import React from "react";
 import { prisma } from "../db";
 import { redirect } from "next/navigation";
 
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+
 const Admin = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/api/auth/signin");
+  }
+
   const categories = await prisma.category.findMany();
   async function addProduct(data: FormData) {
     "use server";

@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-      {/* @ts-expect-error Server Component */}
       <Categories />
       <Reviews />
     </div>

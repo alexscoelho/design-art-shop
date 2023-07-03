@@ -44,7 +44,6 @@ const Page = () => {
       <div className="flex flex-col">
         <label htmlFor="name">Link</label>
         <input
-          maxLength={50}
           required
           name="url"
           type="text"
